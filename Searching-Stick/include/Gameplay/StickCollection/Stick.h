@@ -1,0 +1,19 @@
+#pragma once
+#include "UI/UIElement/RectangleShapeView.h"
+
+struct Stick
+{
+	int data;
+	UI::UIElement::RectangleShapeView* stick_view;
+
+	Stick(int data)
+	{
+		this->data = data;
+		stick_view = new UI::UIElement::RectangleShapeView();
+	}
+
+	~Stick()
+	{
+		delete stick_view;
+	}
+};
