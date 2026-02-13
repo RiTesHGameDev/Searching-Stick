@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <thread>
 
 namespace Gameplay
 {
@@ -22,8 +23,12 @@ namespace Gameplay
 
 			Stick* stick_to_search;
 
+			std::thread search_thread;
+
 			int number_of_array_access;
 			int number_of_comparisons;
+
+			int current_operation_delay;
 
 			void initializeSticks();
 			void initializeSticksArray();
@@ -39,6 +44,9 @@ namespace Gameplay
 
 			void processLinearSearch();
 			void shuffleSticks();
+
+			void joinThreads();
+			void processSearchThreadState();
 
 			void destroy();
 
@@ -57,6 +65,8 @@ namespace Gameplay
 
 			int getNumberOfArrayAccess();
 			int getNumberOfComparisons();
+
+			int getDelayMilliseconds();
 
 		};
 	}

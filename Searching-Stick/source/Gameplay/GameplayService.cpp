@@ -44,4 +44,34 @@ namespace Gameplay
 	{
 		srand(static_cast<unsigned int>(time(nullptr)));
 	}
+
+	void GameplayService::searchElement(StickCollection::SearchType search_type)
+	{
+		stick_collection_controller->searchElement(search_type);
+	}
+
+	StickCollection::SearchType GameplayService::getSearchType()
+	{
+		return stick_collection_controller->getSearchType();
+	}
+
+	int GameplayService::getNumberOfComparisons()
+	{
+		return stick_collection_controller->getNumberOfComparisons();
+	}
+
+	int GameplayService::getNumberOfArrayAccess()
+	{
+		return stick_collection_controller->getNumberOfArrayAccess();
+	}
+
+	int GameplayService::getNumberOfSticks()
+	{
+		return stick_collection_controller->getNumberOfSticks();
+	}
+
+	int GameplayService::getDelayMilliseconds()
+	{
+		return stick_collection_controller->getDelayMilliseconds();
+	}
 }

@@ -24,7 +24,7 @@ namespace Gameplay
 			const sf::Color found_element_color = sf::Color::Green;
 			const sf::Color processing_element_color = sf::Color::Red;
 
-			int linear_search_delay = 120;
+			int linear_search_delay = 140;
 			int number_of_elements = 100;    
 
 			StickCollectionModel();
@@ -34,6 +34,7 @@ namespace Gameplay
 			void update();
 
 			void setElementsSpacing(float space);
+
 		};
 	}
 
