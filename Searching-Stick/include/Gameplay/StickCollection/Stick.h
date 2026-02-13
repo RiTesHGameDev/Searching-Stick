@@ -1,19 +1,25 @@
 #pragma once
 #include "UI/UIElement/RectangleShapeView.h"
 
-struct Stick
+namespace Gameplay
 {
-	int data;
-	UI::UIElement::RectangleShapeView* stick_view;
-
-	Stick(int data)
+	namespace StickCollection
 	{
-		this->data = data;
-		stick_view = new UI::UIElement::RectangleShapeView();
-	}
+		struct Stick
+		{
+			int data;
+			UI::UIElement::RectangleShapeView* stick_view;
 
-	~Stick()
-	{
-		delete stick_view;
+			Stick(int data)
+			{
+				this->data = data;
+				stick_view = new UI::UIElement::RectangleShapeView();
+			}
+
+			~Stick()
+			{
+				delete stick_view;
+			}
+		};
 	}
-};
+}

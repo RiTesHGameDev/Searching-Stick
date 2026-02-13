@@ -11,7 +11,6 @@ namespace Gameplay
 		private:
 			StickCollectionModel* model;
 			StickCollectionController* controller;
-			void initializeBackgroundImage();
 		public:
 			StickCollectionView();
 			~StickCollectionView();

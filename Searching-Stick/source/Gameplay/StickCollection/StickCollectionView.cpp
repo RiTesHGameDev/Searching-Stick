@@ -6,11 +6,9 @@ namespace Gameplay
 	{
 		StickCollectionView::StickCollectionView()
 		{
-			model = new StickCollectionModel();
 		}
 		StickCollectionView::~StickCollectionView()
 		{
-			delete model;
 		}
 		void StickCollectionView::initialize(StickCollectionController* controller)
 		{
@@ -18,7 +16,6 @@ namespace Gameplay
 		}
 		void StickCollectionView::update()
 		{
-			model->update();
 		}
 		void StickCollectionView::render()
 		{
