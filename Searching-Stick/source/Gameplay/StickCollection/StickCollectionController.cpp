@@ -5,6 +5,7 @@
 #include "Gameplay/GameplayService.h"
 #include "Global/ServiceLocator.h"
 #include <iostream>
+#include <random>
 
 using namespace std;
 
@@ -50,9 +51,66 @@ namespace Gameplay
 
 		void StickCollectionController::reset()
 		{
+			shuffleSticks();
 			updateSticksPosition();
 			resetSticksColor();
+			resetSearchStick();
+			resetVariables();
 		}
+
+		void StickCollectionController::searchElement(StickCollection::SearchType search_type)
+		{
+			this->search_type = search_type;
+			switch (search_type)
+			{
+			case SearchType::LINEAR:
+				processLinearSearch();
+				break;
+			case SearchType::BINARY:
+				//processBinarySearch();
+				break;
+			default:
+				printf("Invalid search type");
+				return;
+			}
+		}
+
+		void StickCollectionController::resetSearchStick()
+		{
+			stick_to_search = sticks[rand() % sticks.size()];
+			stick_to_search->stick_view->setFillColor(stick_collection_model->search_element_color);
+		}
+
+		void StickCollectionController::resetVariables()
+		{
+			number_of_array_access = 0;
+			number_of_comparisons = 0;
+		}
+
+		void StickCollectionController::processLinearSearch()
+		{
+			for(int i = 0; i < sticks.size(); i++)
+			{
+				number_of_array_access += 1;
+				number_of_comparisons++;
+
+				Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::COMPARE_SFX);
+
+				if(sticks[i] == stick_to_search)
+				{
+					sticks[i]->stick_view->setFillColor(stick_collection_model->found_element_color);
+					stick_to_search = nullptr;
+					return;
+				}
+				else
+				{
+					sticks[i]->stick_view->setFillColor(stick_collection_model->processing_element_color);
+					sticks[i]->stick_view->setFillColor(stick_collection_model->element_color);
+				}
+			}
+
+		}
+
 		void StickCollectionController::destroy()
 		{
 			for (int i = 0; i < sticks.size(); i++) delete(sticks[i]);
@@ -61,6 +119,7 @@ namespace Gameplay
 			delete (stick_collection_view);
 			delete (stick_collection_model);
 		}
+
 		void StickCollectionController::initializeSticks()
 		{
 			float rectangle_width = calculateStickWidth();
@@ -132,6 +191,24 @@ namespace Gameplay
 		int StickCollectionController::getNumberOfSticks()
 		{
 			return stick_collection_model->number_of_elements;
+		}
+
+		int StickCollectionController::getNumberOfArrayAccess()
+		{
+			return number_of_array_access;
+		}
+
+		int StickCollectionController::getNumberOfComparisons()
+		{
+			return number_of_comparisons;
+		}
+
+		void StickCollectionController::shuffleSticks()
+		{
+			std::random_device device;
+			std::mt19937 random_engine(device());
+
+			std::shuffle(sticks.begin(), sticks.end(), random_engine);
 		}
 	}
 }

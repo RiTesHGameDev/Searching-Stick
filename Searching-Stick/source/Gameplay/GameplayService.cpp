@@ -17,6 +17,7 @@ namespace Gameplay
 
 	void GameplayService::initialize()
 	{
+		initializeRandomSeeds();
 		gameplay_controller->initialize();
 		stick_collection_controller->initialize();
 	}
@@ -37,5 +38,10 @@ namespace Gameplay
 	{
 		gameplay_controller->reset();
 		stick_collection_controller->reset();
+	}
+
+	void GameplayService::initializeRandomSeeds()
+	{
+		srand(static_cast<unsigned int>(time(nullptr)));
 	}
 }
