@@ -27,12 +27,13 @@ namespace Gameplay
 
 		void searchElement(StickCollection::SearchType search_type);
 
-		StickCollection::SearchType getSearchType();
+		StickCollection::SearchType getCurrentSearchType();
 
 		int getNumberOfComparisons();
 		int getNumberOfArrayAccess();
 		int getNumberOfSticks();
 		int getDelayMilliseconds();
+		sf::String getTimeComplexity();
 
 		void initializeRandomSeeds();
 	};

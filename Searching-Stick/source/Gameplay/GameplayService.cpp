@@ -50,7 +50,7 @@ namespace Gameplay
 		stick_collection_controller->searchElement(search_type);
 	}
 
-	StickCollection::SearchType GameplayService::getSearchType()
+	StickCollection::SearchType GameplayService::getCurrentSearchType()
 	{
 		return stick_collection_controller->getSearchType();
 	}
@@ -73,5 +73,10 @@ namespace Gameplay
 	int GameplayService::getDelayMilliseconds()
 	{
 		return stick_collection_controller->getDelayMilliseconds();
+	}
+
+	sf::String GameplayService::getTimeComplexity()
+	{
+		return stick_collection_controller->getTimeComplexity();
 	}
 }
