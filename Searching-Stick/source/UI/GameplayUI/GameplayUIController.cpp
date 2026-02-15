@@ -110,9 +110,9 @@ namespace UI
 				seach_type->setText("Search Type: Linear");
 				break;
 
-			//case Gameplay::StickCollection::SearchType::BINARY:
-				//seach_type->setText("Search Type: Binary");
-				//break;
+			case Gameplay::StickCollection::SearchType::BINARY:
+				seach_type->setText("Search Type: Binary");
+				break;
 			default:
 				break;
 			}

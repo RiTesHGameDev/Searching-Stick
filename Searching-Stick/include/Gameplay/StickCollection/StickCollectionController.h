@@ -45,10 +45,14 @@ namespace Gameplay
 			void resetVariables();
 
 			void processLinearSearch();
+			void processBinarySearch();
 			void shuffleSticks();
 
 			void joinThreads();
 			void processSearchThreadState();
+
+			void sortElements();
+			bool compareElementsData(const Stick* a,const Stick* b)const;
 
 			void destroy();
 
